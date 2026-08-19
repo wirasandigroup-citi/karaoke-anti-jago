@@ -1,1 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lomba Karaoke Unik · RT.01 Jakaban</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --merah: #C1272D;
+    --merah-dark: #8C1518;
+    --kuning: #F3AC10;
+    --kertas: #FFF9EE;
+    --kertas-card: #FFFFFF;
+    --navy: #1B263B;
+    --ink: #241C15;
+    --garis: #E8D3B0;
+    --hijau-wa: #25D366;
+    --hijau-wa-dark: #128C7E;
+    --radius: 16px;
+    --shadow: 0 6px 18px rgba(36,28,21,0.1);
+  }
 
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    background: var(--kertas);
+    background-image: radial-gradient(circle at 1px 1px, rgba(193,39,45,0.06) 1px, transparent 0);
+    background-size: 24px 24px;
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    padding-bottom: 50px;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+
+  /* Top Banner Bunting Flags */
+  .flag-wrap {
+    display: flex; justify-content: center; gap: 4px; padding-top: 8px; overflow: hidden;
+  }
+  .flag {
+    width: 28px; height: 36px;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    flex: 0 0 auto;
+  }
+
+  /* Header Poster */
+  header {
+    background: linear-gradient(180deg, var(--merah) 0%, var(--merah-dark) 100%);
+    color: #fff;
+    border-radius: 0 0 24px 24px;
+    padding: 20px 20px 28px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .badge-top {
+    display: inline-block;
+    background: var(--kuning);
+    color: var(--navy);
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .sub-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: #FFE399;
+    margin: 4px 0 10px;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: clamp(32px, 6vw, 52px);
+    line-height: 1;
+    margin: 0;
+    font-weight: 800;
+    text-shadow: 0 4px 0 rgba(0,0,0,0.2);
+  }
+  .tagline-hero {
+    background: #FFF;
+    color: var(--merah-dark);
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: clamp(16px, 3.5vw, 22px);
+    font-weight: 800;
+    margin-top: 14px;
+    border: 3px solid var(--kuning);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+
+  /* Bubble Fun Facts */
+  .fun-bubbles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .bubble {
+    background: #FFF;
+    border: 2px dashed var(--merah);
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .bubble span { color: var(--merah); display: block; font-size: 11px; margin-top: 2px; }
+
+  /* Card Component */
+  .card {
+    background: var(--kertas-card);
+    border: 2px solid var(--garis);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+  .card-title {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFF;
+    background: var(--merah);
+    display: inline-block;
+    padding: 4px 16px;
+    border-radius: 8px;
+    margin: -32px 0 16px 0;
+    box-shadow: 0 3px 0 var(--merah-dark);
+  }
+
+  /* Grid Layouts */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media(max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+
+  /* Kriteria List */
+  .kriteria-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--garis);
+  }
+  .kriteria-item:last-child { border-bottom: none; }
+  .kriteria-info h4 { margin: 0; font-size: 14px; color: var(--navy); }
+  .kriteria-info p { margin: 2px 0 0; font-size: 12px; color: #7A6F60; }
+  .kriteria-badge {
+    background: var(--kuning);
+    color: var(--navy);
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  /* Checklist Anti Jago */
+  .checklist { list-style: none; padding: 0; margin: 0; font-size: 13px; }
+  .checklist li {
+    padding: 6px 0;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .checklist li::before {
+    content: "✔";
+    color: var(--merah);
+    font-weight: bold;
+    background: #FFE8E8;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  /* Detail Jadwal */
+  .jadwal-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    text-align: center;
+    background: var(--navy);
+    color: #FFF;
+    border-radius: 12px;
+    padding: 16px;
+  }
+  @media(max-width: 560px) { .jadwal-box { grid-template-columns: 1fr; } }
+  .jadwal-item h5 { margin: 0; font-size: 11px; color: var(--kuning); text-transform: uppercase; letter-spacing: 0.08em; }
+  .jadwal-item p { margin: 4px 0 0; font-size: 13px; font-weight: 700; }
+
+  /* Hadiah Section */
+  .hadiah-card {
+    background: #FFF;
+    border: 1.5px solid var(--garis);
+    border-radius: 12px;
+    padding: 12px;
+  }
+  .hadiah-card h4 {
+    margin: 0 0 8px; font-family: 'Baloo 2', sans-serif;
+    color: var(--merah-dark); border-bottom: 2px solid var(--garis); padding-bottom: 4px;
+  }
+  .hadiah-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+  .hadiah-row b { font-family: 'IBM Plex Mono', monospace; color: var(--navy); }
+
+  /* Pendaftaran WA Form */
+  .form-group { margin-bottom: 12px; }
+  label { display: block; font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  input, select {
+    width: 100%; padding: 10px 12px; border: 1.5px solid var(--garis); border-radius: 8px;
+    font-family: inherit; font-size: 14px; background: #FFF;
+  }
+  input:focus, select:focus { outline: 2px solid var(--kuning); border-color: var(--kuning); }
+
+  .btn-wa {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--hijau-wa); color: #FFF; text-decoration: none;
+    padding: 14px; border-radius: 10px; font-weight: 800; font-size: 15px;
+    border: none; cursor: pointer; width: 100%; transition: 0.15s;
+    box-shadow: 0 4px 0 var(--hijau-wa-dark);
+  }
+  .btn-wa:hover { background: #20BA5A; transform: translateY(-1px); }
+  .btn-wa:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--hijau-wa-dark); }
+
+  footer {
+    text-align: center; font-size: 12px; color: #7A6F60; margin-top: 20px; font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="flag-wrap">
+    <div class="flag" style="background:#FFF;"></div>
+    <div class="flag" style="background:var(--kuning);"></div>
+    <div class="flag" style="background:#FFF;"></div>
+    <div class="flag" style="background:var(--kuning);"></div>
+  </div>
+  <span class="badge-top">HUT RI KE-81 · DIRGAHAYU REPUBLIK INDONESIA</span>
+  <div class="sub-title">Malam Panggung Hiburan RT.01 Jakaban</div>
+  <h1>LOMBA KARAOKE</h1>
+  <div class="tagline-hero">Yang Grogi, Kaku & Lucu ITU YANG MENANG! 😳🗿😂</div>
+</header>
+
+<div class="container" style="margin-top: 24px;">
+
+  <!-- Fun Bubbles -->
+  <div class="fun-bubbles">
+    <div class="bubble"> Deg-degan Jantungan? <span>NILAI PLUS!</span></div>
+    <div class="bubble"> Berdiri Kaku Kayak Patung? <span>NILAI PLUS!</span></div>
+    <div class="bubble"> Bikin Ketawa Penonton? <span>NILAI PLUS!</span></div>
+  </div>
+
+  <!-- Jadwal Pelaksanaan -->
+  <div class="card">
+    <div class="jadwal-box">
+      <div class="jadwal-item">
+        <h5>🗓️ Pelaksanaan</h5>
+        <p>Sabtu, 22 Agustus 2026</p>
+      </div>
+      <div class="jadwal-item">
+        <h5>⏰ Pukul</h5>
+        <p>19.30 WIB - Selesai</p>
+      </div>
+      <div class="jadwal-item">
+        <h5>📍 Tempat</h5>
+        <p>Panggung Hiburan RT.01 Jakaban</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kriteria & Nilai Plus -->
+  <div class="grid2">
+    <div class="card">
+      <span class="card-title">Kriteria Penilaian "Anti Jago"</span>
+      <div class="kriteria-item">
+        <div class="kriteria-info">
+          <h4>😳 Grogi & Keringat Dingin</h4>
+          <p>Makin grogi, makin tinggi nilai</p>
+        </div>
+        <span class="kriteria-badge">30%</span>
+      </div>
+      <div class="kriteria-item">
+        <div class="kriteria-info">
+          <h4>🗿 Kekakuan Gaya</h4>
+          <p>Berdiri kaku seperti patung = nilai tinggi</p>
+        </div>
+        <span class="kriteria-badge">25%</span>
+      </div>
+      <div class="kriteria-item">
+        <div class="kriteria-info">
+          <h4>😂 Kelucuan & Bikin Ketawa</h4>
+          <p>Makin menghibur warga, makin tinggi</p>
+        </div>
+        <span class="kriteria-badge">25%</span>
+      </div>
+      <div class="kriteria-item">
+        <div class="kriteria-info">
+          <h4>🎤 Tetap Berani Sampai Selesai</h4>
+          <p>Walaupun salah lirik/nada tetap lanjut</p>
+        </div>
+        <span class="kriteria-badge">20%</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-title">Nilai Plus Kalau:</span>
+      <ul class="checklist">
+        <li>Salah lirik tapi tetap pede</li>
+        <li>Nada meleset tapi tidak menyerah</li>
+        <li>Pegang mic gemetaran</li>
+        <li>Berdiri kaku seperti tiang listrik</li>
+        <li>Tatapan kosong karena grogi</li>
+        <li>Salah masuk lagu / Lupa lirik lalu improvisasi</li>
+        <li>Jogetnya tidak jelas / Pasangan duet saling bingung</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Hadiah -->
+  <div class="card">
+    <span class="card-title">Hadiah Menarik! 🏆</span>
+    <div class="grid2">
+      <div class="hadiah-card">
+        <h4>🎤 Kategori Solo</h4>
+        <div class="hadiah-row"><span>🥇 Juara 1</span><b>Rp 150.000</b></div>
+        <div class="hadiah-row"><span>🥈 Juara 2</span><b>Rp 100.000</b></div>
+        <div class="hadiah-row"><span>🥉 Juara 3</span><b>Rp 50.000</b></div>
+      </div>
+      <div class="hadiah-card">
+        <h4>🎶 Kategori Duet</h4>
+        <div class="hadiah-row"><span>🥇 Juara 1</span><b>Rp 150.000</b></div>
+        <div class="hadiah-row"><span>🥈 Juara 2</span><b>Rp 100.000</b></div>
+        <div class="hadiah-row"><span>🥉 Juara 3</span><b>Rp 50.000</b></div>
+      </div>
+    </div>
+    <p style="font-size: 11px; color: #7A6F60; margin: 10px 0 0; text-align: center;">
+      * 1 orang hanya boleh mendapatkan 1 hadiah. Total hadiah untuk pasangan duet.
+    </p>
+  </div>
+
+  <!-- Pendaftaran WA -->
+  <div class="card">
+    <span class="card-title">Pendaftaran Langsung WA 📱</span>
+    <form id="formDaftar" onsubmit="kirimWA(event)">
+      <div class="form-group">
+        <label>Pilih Kategori</label>
+        <select id="kategori" onchange="toggleDuetFields()">
+          <option value="Solo">🎤 Solo</option>
+          <option value="Duet">🎶 Duet</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Nama Peserta 1</label>
+        <input type="text" id="nama1" placeholder="Masukkan nama Anda" required>
+      </div>
+      <div class="form-group" id="wrapNama2" style="display: none;">
+        <label>Nama Peserta 2 (Pasangan Duet)</label>
+        <input type="text" id="nama2" placeholder="Masukkan nama pasangan duet">
+      </div>
+      <div class="form-group">
+        <label>Judul Lagu</label>
+        <input type="text" id="judulLagu" placeholder="Contoh: Kopi Dangdut / Begadang" required>
+      </div>
+      <button type="submit" class="btn-wa">
+        💬 Kirim Pendaftaran via WhatsApp
+      </button>
+    </form>
+  </div>
+
+  <footer>
+    BUKAN SOAL SIAPA YANG PALING JAGO!<br>
+    SEMANGAT, BERANI & MENGHIBUR ITU YANG KAMI CARI! 🎉🇮🇩
+  </footer>
+
+</div>
+
+<script>
+  function toggleDuetFields() {
+    const kat = document.getElementById('kategori').value;
+    const wrap = document.getElementById('wrapNama2');
+    wrap.style.display = (kat === 'Duet') ? 'block' : 'none';
+  }
+
+  function kirimWA(e) {
+    e.preventDefault();
+    const nomorPanitia = "6281281122013"; // Sesuaikan dengan nomor panitia
+    const kategori = document.getElementById('kategori').value;
+    const nama1 = document.getElementById('nama1').value.trim();
+    const nama2 = document.getElementById('nama2').value.trim();
+    const judulLagu = document.getElementById('judulLagu').value.trim();
+
+    let pesan = `Halo Panitia Karaoke RT.01 Jakaban! 👋\nSaya mau mendaftar Lomba Karaoke Anti-Jago:\n\n`;
+    
+    if(kategori === 'Solo') {
+      pesan += `📌 *Kategori:* Solo\n👤 *Nama:* ${nama1}\n🎵 *Judul Lagu:* ${judulLagu}`;
+    } else {
+      pesan += `📌 *Kategori:* Duet\n👥 *Nama Pasangan:* ${nama1} & ${nama2}\n🎵 *Judul Lagu:* ${judulLagu}`;
+    }
+
+    const url = `https://wa.me/${nomorPanitia}?text=${encodeURIComponent(pesan)}`;
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>
