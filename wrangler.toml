@@ -1,0 +1,6 @@
+name = "karaoke-realtime"
+main = "worker.js"
+compatibility_date = "2026-08-23"
+
+# Cloudflare Worker entry point is explicitly worker.js.
+# Existing remote bindings are retained by the Cloudflare Worker configuration.
